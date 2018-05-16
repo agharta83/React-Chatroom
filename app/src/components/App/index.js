@@ -11,13 +11,35 @@ import Form from 'src/components/Form';
 /**
  * Code
  */
-const App = () => (
-  <div id="app">
-    <h1>Welcome in Amazing Chatroom !</h1>
-    <Messages />
-    <Form />
-  </div>
-);
+class App extends React.Component {
+  state = {}
+
+  /*
+  * Actions
+  */
+  // Soumission du formulaire
+  handleSubmit = (evt) => {
+    evt.preventDefault();
+  }
+
+  // Réagir à l'input du formulaire
+  handleInputChange = () => {
+  }
+
+  /*
+   * Render
+   */
+  render() {
+    return (
+      <div id="app">
+        <h1>Welcome in Amazing Chatroom !</h1>
+        <Messages />
+        <Form onSubmitMessage={this.handleSubmit} changeInput={this.handleInputChange} />
+      </div>
+    );
+  }
+}
+
 
 /**
  * Export

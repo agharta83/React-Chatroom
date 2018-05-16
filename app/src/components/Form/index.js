@@ -2,7 +2,7 @@
  * NPM Import
  */
 import React from 'react';
-
+import PropTypes from 'prop-types';
 /*
  * Local Import
  */
@@ -10,13 +10,21 @@ import React from 'react';
 /*
  * Code
  */
-const Form = () => (
-  <form action="">
-    <input id="m" autoComplete="off" />
+const Form = ({ onSubmitMessage, changeInput }) => (
+  <form action="" onSubmit={onSubmitMessage}>
+    <input id="m" autoComplete="off" onChange={changeInput} />
     <button>Send</button>
   </form>
 
 );
+
+/*
+ * Validation Props
+ */
+Form.propTypes = {
+  onSubmitMessage: PropTypes.func.isRequired,
+  changeInput: PropTypes.func.isRequired,
+};
 /*
  * Export
  */
