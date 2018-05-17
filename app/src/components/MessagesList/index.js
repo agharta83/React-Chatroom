@@ -11,7 +11,7 @@ import React from 'react';
  * Code
  */
 const MessagesList = () => (
-  <div>
+  <div id="chatroom">
     <h2>Chatroom</h2>
     <ul id="messages">blablabla</ul>
   </div>

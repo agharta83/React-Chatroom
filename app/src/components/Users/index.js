@@ -11,12 +11,13 @@ import React from 'react';
  * Code
  */
 const Users = () => (
-  <div>
+  <aside id="aside">
     <ul>
+      <h2>Utilisateurs</h2>
       <li>Elsa</li>
       <li>Anna</li>
     </ul>
-  </div>
+  </aside>
 
 );
 /*

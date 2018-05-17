@@ -2,7 +2,7 @@
  * NPM Import
  */
 import React from 'react';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 /*
  * Local Import
  */
@@ -11,7 +11,7 @@ import PropTypes from 'prop-types';
  * Code
  */
 const AddMessage = () => (
-  <form action="">
+  <form id="form" action="">
     <input id="m" autoComplete="off" />
     <button>Send</button>
   </form>
@@ -21,7 +21,7 @@ const AddMessage = () => (
 /*
  * Validation Props
  */
-Form.propTypes = {
+AddMessage.propTypes = {
 
 };
 /*
