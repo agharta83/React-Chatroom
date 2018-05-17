@@ -10,14 +10,16 @@ import React from 'react';
 /*
  * Code
  */
-const Messages = () => (
+const Users = () => (
   <div>
-    <h2>Chatroom</h2>
-    <ul id="messages">blablabla</ul>
+    <ul>
+      <li>Elsa</li>
+      <li>Anna</li>
+    </ul>
   </div>
 
 );
 /*
  * Export
  */
-export default Messages;
+export default Users;

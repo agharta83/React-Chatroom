@@ -6,25 +6,31 @@ import React from 'react';
 /**
  * Local import
  */
-import Messages from 'src/components/Messages';
-import Form from 'src/components/Form';
+import MessagesList from 'src/components/MessagesList';
+import AddMessage from 'src/components/AddMessage';
+import Users from 'src/components/Users'
 /**
  * Code
  */
 class App extends React.Component {
-  state = {}
+  state = {
+
+  }
+
+  // On va récupérer le this dans le contexte de la classe.
+
+  /*
+   * Lifecycle
+   */
+  componentDidMount() {
+
+  }
 
   /*
   * Actions
   */
   // Soumission du formulaire
-  handleSubmit = (evt) => {
-    evt.preventDefault();
-  }
 
-  // Réagir à l'input du formulaire
-  handleInputChange = () => {
-  }
 
   /*
    * Render
@@ -33,8 +39,11 @@ class App extends React.Component {
     return (
       <div id="app">
         <h1>Welcome in Amazing Chatroom !</h1>
-        <Messages />
-        <Form onSubmitMessage={this.handleSubmit} changeInput={this.handleInputChange} />
+        <Users />
+        <div id="main">
+          <MessagesList />
+          <AddMessage />
+        </div>
       </div>
     );
   }

@@ -36,8 +36,8 @@ app.get('/', function(req, res) {
 let id = 0;
 io.on('connection', function(socket) {
   console.log('a user connected');
-  socket.on('send_message', function(message) {
-    console.log('message: ' + message);
+  socket.on('message', function(message) {
+    console.log('I receives a message', message);
     message.id = ++id;
     io.emit('send_message', message);
   });
