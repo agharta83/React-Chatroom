@@ -20,7 +20,8 @@ const MessagesList = ({ messages }) => (
         >
           {message.text}
         </li>
-      ))}
+          ))}
+      }}
     </ul>
   </div>
 );

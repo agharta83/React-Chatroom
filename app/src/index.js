@@ -10,7 +10,7 @@ import { Provider } from 'react-redux';
  */
 import App from 'src/components/App';
 import store from 'src/store';
-
+import { addUser } from 'src/store/reducer';
 /**
  * Code
  */
@@ -25,6 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const node = document.getElementById('root');
   // Rendu
   render(rootComponent, node);
+  store.dispatch(addUser('Me'));
 });
 
 /**

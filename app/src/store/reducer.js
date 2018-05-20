@@ -8,15 +8,17 @@ const initialState = {
   messages: [
     {
       id: 0,
-      text: '',
-    },
+    }
   ],
 };
 
-const messageId = 0;
 /*
  * Reducer
  */
+export const CHANGE_INPUT = 'CHANGE_INPUT';
+export const ADD_MESSAGE = 'ADD_MESSAGE';
+export const ADD_USER = 'ADD_USER';
+export const USERS_LIST = 'USERS_LIST';
 
 const reducer = (state = initialState, action = {}) => {
   switch (action.type) {
@@ -32,6 +34,7 @@ const reducer = (state = initialState, action = {}) => {
 
       const message = {
         id: newId,
+        author: action.author,
         text: state.input,
       };
 
@@ -46,11 +49,12 @@ const reducer = (state = initialState, action = {}) => {
     case 'ADD_USER':
       return {
         ...state,
+        name: action.name,
       };
 
     case 'USERS_LIST':
       return {
-        ...state,
+        users: action.users,
       };
 
     default:
@@ -71,7 +75,7 @@ export const addMessage = () => ({
   type: 'ADD_MESSAGE',
 });
 
-export const addUSer = name => ({
+export const addUser = name => ({
   type: 'ADD_USER',
   name,
 });
