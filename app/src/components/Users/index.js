@@ -17,6 +17,7 @@ const Users = () => (
       <li>Elsa</li>
       <li>Anna</li>
     </ul>
+    <input type="text" placeholder="username" />
   </aside>
 
 );

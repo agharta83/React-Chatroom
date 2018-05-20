@@ -6,9 +6,9 @@ import React from 'react';
 /**
  * Local import
  */
-import MessagesList from 'src/components/MessagesList';
-import AddMessage from 'src/components/AddMessage';
-import Users from 'src/components/Users'
+import MessagesList from 'src/containers/MessagesList';
+import AddMessage from 'src/containers/AddMessage';
+import Users from 'src/components/Users';
 /**
  * Code
  */
