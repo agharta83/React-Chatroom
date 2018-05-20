@@ -26,7 +26,7 @@ class AddMessage extends React.Component {
     const { inputValue } = this.props;
     return (
       <form id="form" action="" onSubmit={this.handleSubmit}>
-        <input id="m" value={inputValue} onChange={this.handleChange} />
+        <input id="m" autoComplete="off" value={inputValue} onChange={this.handleChange} />
         <button>Send</button>
       </form>
     );

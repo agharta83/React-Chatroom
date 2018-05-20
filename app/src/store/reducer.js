@@ -5,7 +5,12 @@
 const initialState = {
   input: '',
   users: '',
-  messages: [],
+  messages: [
+    {
+      id: 0,
+      text: '',
+    },
+  ],
 };
 
 const messageId = 0;
@@ -22,13 +27,18 @@ const reducer = (state = initialState, action = {}) => {
       };
 
     case 'ADD_MESSAGE': {
+      const allIds = state.messages.map(message => message.id);
+      const newId = Math.max(...allIds) + 1;
+
       const message = {
-        id: messageId + 1,
-        message: state.input,
+        id: newId,
+        text: state.input,
       };
+
+      const newMessages = [...state.messages, message];
       return {
         ...state,
-        messages: [...state.messages, message],
+        messages: newMessages,
         input: '', // Pour vider l'input
       };
     }
