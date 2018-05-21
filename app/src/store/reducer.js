@@ -1,3 +1,4 @@
+
 /**
  * InitialState
  */
@@ -8,7 +9,7 @@ const initialState = {
   messages: [
     {
       id: 0,
-    }
+    },
   ],
 };
 
@@ -17,17 +18,20 @@ const initialState = {
  */
 export const CHANGE_INPUT = 'CHANGE_INPUT';
 export const ADD_MESSAGE = 'ADD_MESSAGE';
+export const SEND_MESSAGE = 'SEND_MESSAGE';
 export const ADD_USER = 'ADD_USER';
 export const USERS_LIST = 'USERS_LIST';
 
 const reducer = (state = initialState, action = {}) => {
   switch (action.type) {
     case 'CHANGE_INPUT':
+
       return {
         ...state,
         input: action.value,
       };
 
+    case 'SEND_MESSAGE':
     case 'ADD_MESSAGE': {
       const allIds = state.messages.map(message => message.id);
       const newId = Math.max(...allIds) + 1;
@@ -80,10 +84,9 @@ export const addUser = name => ({
   name,
 });
 
-export const messageReceived = (message, user) => ({
-  type: 'MESSAGE_RECIEVED',
+export const sendMessage = message => ({
+  type: 'SEND_MESSAGE',
   message,
-  user,
 });
 
 export const UsersList = users => ({

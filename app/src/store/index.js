@@ -1,12 +1,13 @@
 /**
  * NPM import
  */
-import { createStore } from 'redux';
+import { createStore, applyMiddleware, compose } from 'redux';
 
 /**
  * Local import
  */
 import reducer from './reducer';
+import socketio from './middleware';
 
 /**
  * Code
@@ -17,7 +18,12 @@ if (window.devToolsExtension) {
   devTools.push(window.devToolsExtension());
 }
 
-const store = createStore(reducer, ...devTools);
+// Middleware
+const Middleware = applyMiddleware(socketio);
+
+// Package Middleware // enhancers
+const enhancers = compose(Middleware, ...devTools);
+const store = createStore(reducer, enhancers);
 
 /**
  * Export
