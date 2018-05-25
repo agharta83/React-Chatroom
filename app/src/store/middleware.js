@@ -21,6 +21,7 @@ const socketio = store => next => (action) => {
   switch (action.type) {
     case ADD_MESSAGE: {
       const state = store.getState();
+      console.log('middleware', state);
       break;
     }
     default:

@@ -28,7 +28,7 @@ const MessagesList = ({ messages }) => (
 MessagesList.propTypes = {
   messages: PropTypes.arrayOf(PropTypes.shape({
     id: PropTypes.number.isRequired,
-    message: PropTypes.string.isRequired,
+    // message: PropTypes.string.isRequired,
   }).isRequired).isRequired,
 };
 /*
