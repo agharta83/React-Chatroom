@@ -1,64 +1,75 @@
-
 /**
- * InitialState
+ * Code
  */
-
 const initialState = {
-  input: '',
-  users: '',
+  title: 'Chatroom',
+  settings: {
+    user: 'jd',
+    open: true, // Settings ouverts ou fermés ?
+  },
+  message: '',
   messages: [
-    {
-      id: 0,
-    },
+    // {
+    //   id: 1,
+    //   content: 'Salut, ça va ?',
+    //   user: 'jd',
+    // },
+    // {
+    //   id: 2,
+    //   content: 'Pas mal, pas mal.',
+    //   user: 'Guillaume',
+    // },
+    // {
+    //   id: 3,
+    //   content: 'Et toi ?',
+    //   user: 'Guillaume',
+    // },
   ],
 };
 
-/*
- * Reducer
- */
-export const CHANGE_INPUT = 'CHANGE_INPUT';
-export const ADD_MESSAGE = 'ADD_MESSAGE';
+export const WEBSOCKET_CONNECT = 'WEBSOCKET_CONNECT';
+export const MESSAGE_RECEIVED = 'MESSAGE_RECEIVED';
+export const TOGGLE_SETTINGS = 'TOGGLE_SETTINGS';
+export const CHANGE_USER = 'CHANGE_USER';
+export const CHANGE_MESSAGE = 'CHANGE_MESSAGE';
 export const SEND_MESSAGE = 'SEND_MESSAGE';
-export const ADD_USER = 'ADD_USER';
-export const USERS_LIST = 'USERS_LIST';
 
-const reducer = (state = initialState, action = {}) => {
+const reducer = (state = initialState, action) => {
   switch (action.type) {
-    case 'CHANGE_INPUT':
-
+    case TOGGLE_SETTINGS:
       return {
         ...state,
-        input: action.value,
+        settings: {
+          ...state.settings,
+          open: !state.settings.open,
+        },
       };
 
-    case 'SEND_MESSAGE':
-    case 'ADD_MESSAGE': {
-      const allIds = state.messages.map(message => message.id);
-      const newId = Math.max(...allIds) + 1;
-
-      const message = {
-        id: newId,
-        author: action.author,
-        text: state.input,
-      };
-
-      const newMessages = [...state.messages, message];
+    case CHANGE_USER:
       return {
         ...state,
-        messages: newMessages,
-        input: '', // Pour vider l'input
+        settings: {
+          ...state.settings,
+          user: action.value,
+        },
       };
-    }
 
-    case 'ADD_USER':
+    case CHANGE_MESSAGE:
       return {
         ...state,
-        name: action.name,
+        message: action.value,
       };
 
-    case 'USERS_LIST':
+    case SEND_MESSAGE:
       return {
-        users: action.users,
+        ...state,
+        message: '',
+      };
+
+    case MESSAGE_RECEIVED:
+      return {
+        ...state,
+        messages: [...state.messages, action.message],
       };
 
     default:
@@ -66,36 +77,34 @@ const reducer = (state = initialState, action = {}) => {
   }
 };
 
-
-/**
- * actionCreators
- */
-export const changeInput = value => ({
-  type: 'CHANGE_INPUT',
-  value,
-});
-
-export const addMessage = () => ({
-  type: 'ADD_MESSAGE',
-});
-
-export const addUser = name => ({
-  type: 'ADD_USER',
-  name,
-});
-
-export const sendMessage = message => ({
-  type: 'SEND_MESSAGE',
-  message,
-});
-
-export const UsersList = users => ({
-  type: 'USERS_LIST',
-  users,
-});
-
 /**
  * Export
  */
-
 export default reducer;
+
+export const wsConnect = () => ({
+  type: WEBSOCKET_CONNECT,
+});
+
+export const messageReceived = message => ({
+  type: MESSAGE_RECEIVED,
+  message,
+});
+
+export const toggleSettings = () => ({
+  type: TOGGLE_SETTINGS,
+});
+
+export const changeUser = value => ({
+  type: CHANGE_USER,
+  value,
+});
+
+export const changeMessage = value => ({
+  type: CHANGE_MESSAGE,
+  value,
+});
+
+export const sendMessage = () => ({
+  type: SEND_MESSAGE,
+});

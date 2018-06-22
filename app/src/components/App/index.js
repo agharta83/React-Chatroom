@@ -2,28 +2,31 @@
  * NPM import
  */
 import React from 'react';
+import PropTypes from 'prop-types';
 
 /**
  * Local import
  */
-import MessagesList from 'src/containers/MessagesList';
-import AddMessage from 'src/containers/AddMessage';
-import Users from 'src/components/Users';
+import Messages from 'src/containers/Messages';
+import Settings from 'src/containers/Settings';
+import Form from 'src/containers/Form';
+
 /**
  * Code
  */
-const App = () => (
-  <div id="app">
-    <h1>Welcome in Amazing Chatroom !</h1>
-    <div id="container">
-      <Users />
-      <div id="main">
-        <MessagesList />
-        <AddMessage />
-      </div>
-    </div>
+const App = ({
+  title,
+}) => (
+  <div className="app">
+    <h1 className="app-title">{title}</h1>
+    <Messages />
+    <Settings />
+    <Form />
   </div>
 );
+App.propTypes = {
+  title: PropTypes.string.isRequired,
+};
 
 /**
  * Export

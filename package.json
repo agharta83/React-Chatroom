@@ -33,8 +33,7 @@
     "react-dom": "*",
     "react-redux": "*",
     "redux": "*",
-    "socket.io": "*",
-    "socket.io-client": "^2.1.1"
+    "socket.io": "*"
   },
   "scripts": {
     "start:node": "node server/index.js",

@@ -5,29 +5,28 @@ import 'babel-polyfill';
 import React from 'react';
 import { render } from 'react-dom';
 import { Provider } from 'react-redux';
+
 /**
  * Local import
  */
-import App from 'src/components/App';
+import App from 'src/containers/App';
 import store from 'src/store';
-import { addUser } from 'src/store/reducer';
+import { sendMessage, wsConnect } from 'src/store/reducer';
+
+window.store = store;
+window.sendMessage = sendMessage;
+
 /**
  * Code
  */
-document.addEventListener('DOMContentLoaded', () => {
-  // Composant racine
+window.addEventListener('DOMContentLoaded', () => {
   const rootComponent = (
     <Provider store={store}>
       <App />
     </Provider>
   );
-  // Noeud du DOM
   const node = document.getElementById('root');
-  // Rendu
   render(rootComponent, node);
-  store.dispatch(addUser('Me'));
+  // On se connecte au WebSocket de socket.io
+  store.dispatch(wsConnect());
 });
-
-/**
- * Export
- */

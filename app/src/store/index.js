@@ -7,22 +7,17 @@ import { createStore, applyMiddleware, compose } from 'redux';
  * Local import
  */
 import reducer from './reducer';
-import socketio from './middleware';
+import socket from './middlewares/socket';
 
 /**
  * Code
  */
-// DevTools
-const devTools = [];
+let devTools = [];
 if (window.devToolsExtension) {
-  devTools.push(window.devToolsExtension());
+  devTools = [window.devToolsExtension()];
 }
-
-// Middleware
-const Middleware = applyMiddleware(socketio);
-
-// Package Middleware // enhancers
-const enhancers = compose(Middleware, ...devTools);
+const socketMiddleware = applyMiddleware(socket);
+const enhancers = compose(socketMiddleware, ...devTools);
 const store = createStore(reducer, enhancers);
 
 /**
